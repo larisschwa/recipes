@@ -94,10 +94,13 @@ recipeForm.addEventListener('submit', function(event) {
     let enteredSteps = steps.value;
     let enteredRecipeImage = recipeImage.value; // Capture the image URL
 
-    // Store the Recipe, including the image URL
+    // Split the enteredIngredients string into an array
+    let ingredientsArray = enteredIngredients.split(',');
+
+    // Store the Recipe, including the image URL and ingredients array
     let newRecipe = {
         name: enteredRecipeName,
-        ingredients: enteredIngredients,
+        ingredients: ingredientsArray, // Use the array of ingredients
         steps: enteredSteps,
         image: enteredRecipeImage // Store the image URL
     };
@@ -157,7 +160,7 @@ function editRecipe(recipe) {
         // Capture and update the edited recipe details
         const editedRecipe = {
             name: document.getElementById('edit-recipe-name').value,
-            ingredients: document.getElementById('edit-recipe-ingredients').value,
+            ingredients: [document.getElementById('edit-recipe-ingredients').value],
             steps: document.getElementById('edit-recipe-steps').value,
             image: document.getElementById('edit-recipe-image').value,
         };
